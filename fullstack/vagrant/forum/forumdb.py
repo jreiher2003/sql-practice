@@ -2,7 +2,9 @@
 # Database access functions for the web forum.
 # 
 
+import datetime
 import time
+
 import sqlite3
 
 ## Database connection
@@ -23,8 +25,11 @@ def GetAllPosts():
 def AddPost(content):
     DB = sqlite3.connect("forum.db")
     c = DB.cursor()
-    # t = time.strftime('%c', time.localtime())
+    t = str(datetime.datetime.now().ctime())
+    # f = time.strptime('%d','%b')   
     # DB.append((t, content))
-    c.execute("INSERT INTO posts (content) VALUES ('%s')" % content)
+    print t
+    # print f
+    c.execute("INSERT INTO posts (content, time) VALUES (?,?)", (content,t))
     DB.commit()
     DB.close()
