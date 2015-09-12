@@ -1,5 +1,5 @@
 
 CREATE TABLE posts ( content TEXT,
-                     time TEXT,
+                     time TIMESTAMP,
                      id INTEGER );
 
