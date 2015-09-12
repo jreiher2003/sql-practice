@@ -4,7 +4,7 @@
 
 import datetime
 import time
-
+import bleach
 import sqlite3
 
 ## Database connection
@@ -29,7 +29,8 @@ def AddPost(content):
     # f = time.strptime('%d','%b')   
     # DB.append((t, content))
     print t
+    clean = bleach.clean(content, strip=True)
     # print f
-    c.execute("INSERT INTO posts (content, time) VALUES (?,?)", (content,t))
+    c.execute("INSERT INTO posts (content, time) VALUES (?,?)", (clean,t))
     DB.commit()
     DB.close()
