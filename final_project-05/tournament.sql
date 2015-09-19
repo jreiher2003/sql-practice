@@ -7,13 +7,13 @@
 -- these lines here.
 
 CREATE TABLE players (
-	name TEXT NOT NULL,
-	id INTEGER PRIMARY KEY AUTOINCREMENT);
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name TEXT NOT NULL);
 
-CREATE TABLE matchup (
-	player_1 TEXT,
-	player_2 TEXT,
-	win INTEGER,
-	loss INTEGER,
-	FOREIGN KEY(player_1) REFERENCES players(id),
-	FOREIGN KEY(player_2) REFERENCES players(id));
+-- CREATE TABLE matchup (
+-- 	player_1 TEXT,
+-- 	player_2 TEXT,
+-- 	win INTEGER,
+-- 	loss INTEGER,
+-- 	FOREIGN KEY(player_1) REFERENCES players(id),
+-- 	FOREIGN KEY(player_2) REFERENCES players(id));
