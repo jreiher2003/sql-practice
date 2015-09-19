@@ -14,7 +14,7 @@ def connect():
     return conn, c
 
 def close():
-    """ close db connection """
+    """ commit changes and close db connection """
     conn.commit()
     return conn.close()
 
@@ -101,7 +101,7 @@ def registerPlayer(name):
 
 if __name__ == '__main__':
     conn, c = connect()
-    registerPlayer('May Flowers')
+    # registerPlayer('May Flowers')
     countPlayers()
     # deletePlayers()
     close()
