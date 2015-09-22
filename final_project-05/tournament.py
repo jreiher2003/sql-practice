@@ -18,8 +18,6 @@ def close():
     conn.commit()
     return conn.close()
 
-# def deleteMatches():
-    # """Remove all the match records from the database."""
 
 
 def deletePlayers():
@@ -57,6 +55,26 @@ def registerPlayer(name):
     return regP
 
 
+def reportMatch(winner, loser):
+    """Records the outcome of a single match between two players.
+    Args:
+      winner:  the id number of the player who won
+      loser:  the id number of the player who lost
+    """
+    round = 1
+    mat = c.execute("INSERT INTO matchup (round,winner,loser)\
+                 VALUES(?,?,?)", (round,winner,loser))
+    print "In round %d, player id #%d is the winner and player id #%d is the loser." %(round,winner,loser)
+    return mat
+
+
+
+def deleteMatches():
+    """Remove all the match records from the database."""
+    delMat = c.execute("DELETE from matchup")
+    print "All matches have been successfully deleted"
+    return delMat
+
 
 # def playerStandings():
 #     """Returns a list of the players and their win records, sorted by wins.
@@ -73,13 +91,6 @@ def registerPlayer(name):
 #     """
 
 
-# def reportMatch(winner, loser):
-#     """Records the outcome of a single match between two players.
-
-#     Args:
-#       winner:  the id number of the player who won
-#       loser:  the id number of the player who lost
-#     """
  
  
 # def swissPairings():
@@ -101,7 +112,10 @@ def registerPlayer(name):
 
 if __name__ == '__main__':
     conn, c = connect()
-    # registerPlayer('May Flowers')
-    countPlayers()
+    # registerPlayer('Jeff Reiher')
+    # registerPlayer('Molly Fig')
+    # countPlayers()
     # deletePlayers()
+    # reportMatch(1,2)
+    deleteMatches()
     close()
