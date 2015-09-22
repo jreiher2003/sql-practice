@@ -6,11 +6,16 @@
 -- You can write comments in this file by starting them with two dashes, like
 -- these lines here.
 
+
 CREATE TABLE players (
 	id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-	name TEXT NOT NULL);
+	name TEXT NOT NULL,
+	wins INTEGER DEFAULT 0,
+	matches INTEGER DEFAULT 0
+	);
 
 CREATE TABLE matchup (
-	round INTEGER,
+	id INTEGER,
 	winner INT REFERENCES players(id),
-	loser INT REFERENCES players(id));
+	loser INT REFERENCES players(id)
+	);
